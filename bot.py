@@ -3,10 +3,18 @@ from discord.ext import commands
 from config import TOKEN
 from sss import sss_cevap_bul
 from logic import create_tables, mesaj_kaydet
+import json
+import ssl
+import certifi
+
+
+
+ssl_context = ssl.create_default_context(cafile=certifi.where())
+ssl_context.check_hostname = False
+ssl_context.verify_mode = ssl.CERT_NONE  
 
 intents = discord.Intents.default()
 intents.message_content = True
-
 bot = commands.Bot(command_prefix="!", intents=intents)
 
 @bot.event
@@ -44,7 +52,7 @@ async def yonetici_dokumantasyonu(ctx):
         "**📘 Mağaza Yöneticisi Bot Kullanım Rehberi**\n\n"
         "**1. SSS Yanıtı:** `!sss <mesaj>` komutuyla sık sorulan sorulara yanıt alınabilir.\n"
         "**2. Destek:** Sorun yaşarsanız sistem yöneticinizle iletişime geçebilirsiniz.\n"
-        "**3. !merhaba **Bot seni selamlar.\n"
+        "**3. !merhaba** → Bot seni selamlar.\n"
     )
     await ctx.send(mesaj)
 
@@ -67,7 +75,6 @@ async def komutlar(ctx):
 @bot.command()
 async def sss(ctx):
     try:
-        import json
         with open("sss.json", "r", encoding="utf-8") as f:
             veriler = json.load(f)
 
@@ -87,4 +94,7 @@ async def sss(ctx):
         print(f"[HATA - !sss]: {e}")
 
 if __name__ == "__main__":
-    bot.run(TOKEN)
+    try:
+        bot.run(TOKEN)
+    except Exception as e:
+        print(f"[BAŞLATMA HATASI]: {e}")
