@@ -3,7 +3,7 @@
 ## AMACI📄
 Mağazımızdaki ürünlerle ilgili sorunlar SSS cevapları dilek ve şikayetler için bot
 
-## HEDEF KİTLE👨‍👩‍👧‍👦d
+## HEDEF KİTLE👨‍👩‍👧‍👦
 MAĞAZA MÜŞTERİLERİ
 
 ## KOMUTLAR📋
@@ -13,4 +13,10 @@ MAĞAZA MÜŞTERİLERİ
         "**3. Destek:** Sorun yaşarsanız sistem yöneticinizle iletişime geçebilirsiniz.\n"
 
 
-### DURUM: GELİŞTİRME AŞMASI
+## KURULUM VE KULLANIM⚙📘
+
+git clone https://github.com/furkancinar0351/mezuniyet.git
+
+discord developer portaldan bot oluşturup tokenini config.py nin içine TOKEN = "TOKENİNİZİ YAZIN"
+
+VE ÇALIŞTIRIN
